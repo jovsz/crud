@@ -49,6 +49,7 @@ var cars = [{
   price: '$391,900',
   picture: "https://acroadtrip.blob.core.windows.net/catalogo-imagenes/m/RT_V_f3c22dcb6e2641db878f583a67b5e443.jpg"
 }];
+arrayId = false;
 
 function printCars() {
   var container = document.getElementById('container-cars');
@@ -69,6 +70,7 @@ function deleteCar(id) {
 }
 
 function onEdit(id) {
+  arrayId = true;
   var index = cars.findIndex(function (car) {
     return car.id == id;
   });
@@ -84,23 +86,8 @@ function onEdit(id) {
   var year = document.getElementById('year').value;
   var price = document.getElementById('price').value;
   var picture = document.getElementById('picture').value;
-  var updateCar = {
-    brand: brand,
-    model: model,
-    color: color,
-    year: year,
-    price: price,
-    picture: picture,
-    id: id
-  };
-  upCar();
-}
-
-function upCar(updateCar) {
-  var i = updateCar.id;
-  cars.splice(i, 1, updateCar);
-  alert("Product ".concat(id, " updated"));
-  printCars();
+  return index;
+  addCar();
 }
 
 function addCar() {
@@ -122,10 +109,16 @@ function addCar() {
   };
 
   if (checkEmptyInput() == false) {
-    cars.push(newCar);
-    alert("Product ".concat(id, " Added"));
-    printCars();
-    document.getElementById('form-car').reset();
+    if (arrayId == false) {
+      cars.push(newCar);
+      alert("Product ".concat(id, " Added"));
+      printCars();
+      document.getElementById('form-car').reset();
+    } else {
+      cars.splice(cars[id], 1, newCar);
+      alert("Product updated");
+      printCars();
+    }
   }
 }
 

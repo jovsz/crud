@@ -55,7 +55,7 @@ const cars = [{
     },
 ]
 
-
+arrayId = false;
 
 
 function printCars() {
@@ -87,6 +87,7 @@ function deleteCar(id) {
 }
 
 function onEdit(id) {
+    arrayId = true;
     const index = cars.findIndex((car) => car.id == id);
     document.getElementById("brand").value = cars[id].brand;
     document.getElementById("model").value = cars[id].model;
@@ -102,31 +103,11 @@ function onEdit(id) {
     const price = document.getElementById('price').value;
     const picture = document.getElementById('picture').value;
 
-    const updateCar = {
-        brand,
-        model,
-        color,
-        year,
-        price,
-        picture,
-        id
-    }
-    upCar();
-
-
-
-
+    return index;
+    addCar();
 
 }
 
-function upCar(updateCar) {
-    var i = updateCar.id;
-    cars.splice(i, 1, updateCar);
-
-    alert(`Product ${id} updated`);
-    printCars();
-
-}
 
 function addCar() {
     const brand = document.getElementById('brand').value;
@@ -147,10 +128,17 @@ function addCar() {
         id
     }
     if (checkEmptyInput() == false) {
-        cars.push(newCar);
-        alert(`Product ${id} Added`);
-        printCars();
-        document.getElementById('form-car').reset();
+        if (arrayId == false) {
+            cars.push(newCar);
+            alert(`Product ${id} Added`);
+            printCars();
+            document.getElementById('form-car').reset();
+        } else {
+            cars.splice(cars[id], 1, newCar);
+            alert(`Product updated`);
+            printCars();
+        }
+
     }
 }
 
