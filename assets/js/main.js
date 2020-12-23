@@ -161,7 +161,7 @@ function addCar() {
         if (arrayId == false) {
             const id = cars[cars.length - 1].id + 1;
             cars.push(newCar);
-            alert(`Product ${id +1} Added`);
+            alert(`Product ${id} Added`);
             printCars();
             document.getElementById('form-car').reset();
 

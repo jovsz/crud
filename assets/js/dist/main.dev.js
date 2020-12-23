@@ -138,7 +138,7 @@ function addCar() {
       var _id = cars[cars.length - 1].id + 1;
 
       cars.push(newCar);
-      alert("Product ".concat(_id + 1, " Added"));
+      alert("Product ".concat(_id, " Added"));
       printCars();
       document.getElementById('form-car').reset();
     } else {
