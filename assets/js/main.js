@@ -159,7 +159,7 @@ function addCar() {
 
     if (checkEmptyInput() == false) {
         if (arrayId == false) {
-            const id = cars[cars.length - 1].id + 1;
+            const id = cars[cars.length - 1].id;
             cars.push(newCar);
             alert(`Product ${id} Added`);
             printCars();

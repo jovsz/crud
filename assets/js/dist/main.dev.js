@@ -135,8 +135,7 @@ function addCar() {
 
   if (checkEmptyInput() == false) {
     if (arrayId == false) {
-      var _id = cars[cars.length - 1].id + 1;
-
+      var _id = cars[cars.length - 1].id;
       cars.push(newCar);
       alert("Product ".concat(_id, " Added"));
       printCars();
