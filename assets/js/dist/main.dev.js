@@ -1,5 +1,7 @@
 "use strict";
 
+function _readOnlyError(name) { throw new Error("\"" + name + "\" is read-only"); }
+
 var cars = [{
   id: 1,
   brand: 'Toyota',
@@ -156,7 +158,7 @@ function addCar() {
       printCars();
       document.getElementById('form-car').reset();
       arrayId = false;
-      index = '';
+      id = (_readOnlyError("id"), '');
     }
   }
 }

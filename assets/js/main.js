@@ -180,7 +180,7 @@ function addCar() {
             printCars();
             document.getElementById('form-car').reset();
             arrayId = false;
-            index = '';
+            id = '';
 
         }
     }
