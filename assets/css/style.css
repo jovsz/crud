@@ -209,4 +209,8 @@
             width: 150px;
             height: auto;
         }
+        .container {
+            margin: auto;
+            padding-right: 10px;
+        }
     }
