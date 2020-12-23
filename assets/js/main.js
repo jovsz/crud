@@ -181,8 +181,6 @@ function addCar() {
             printCars();
             document.getElementById('form-car').reset();
             arrayId = false;
-            console.log(cars);
-
         }
     }
 }

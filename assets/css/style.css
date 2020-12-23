@@ -191,3 +191,22 @@
             height: auto;
         }
     }
+    
+    @media(max-width: 500px) {
+        body {
+            display: block;
+        }
+        .width-100 {
+            width: 70px;
+        }
+        .width-350 {
+            width: 70px;
+        }
+        .width-200 {
+            width: 70px;
+        }
+        img {
+            width: 150px;
+            height: auto;
+        }
+    }
