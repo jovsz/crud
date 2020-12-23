@@ -1,7 +1,5 @@
 "use strict";
 
-function _readOnlyError(name) { throw new Error("\"" + name + "\" is read-only"); }
-
 var cars = [{
   id: 1,
   brand: 'Toyota',
@@ -96,10 +94,10 @@ function printCars() {
 }
 
 function deleteCar(id) {
-  var index = cars.findIndex(function (car) {
+  var idIndex = cars.findIndex(function (car) {
     return car.id == id;
   });
-  cars.splice(index, 1);
+  cars.splice(idIndex, 1);
   alert("id ".concat(id, " Product deleted"));
   printCars();
 }
@@ -118,28 +116,34 @@ function updateCar(id) {
 }
 
 function addCar() {
-  var id = index;
   var brand = document.getElementById('brand').value;
   var model = document.getElementById('model').value;
   var color = document.getElementById('color').value;
   var year = document.getElementById('year').value;
   var price = document.getElementById('price').value;
   var picture = document.getElementById('picture').value;
-  var upCar = {
-    brand: brand,
-    model: model,
-    color: color,
-    year: year,
-    price: price,
-    picture: picture,
-    id: id
-  };
 
   if (checkEmptyInput() == false) {
     if (arrayId == false) {
-      var _id = cars[cars.length - 1].id + 1;
-
+      var id = cars[cars.length - 1].id + 1;
       var newCar = {
+        id: id,
+        brand: brand,
+        model: model,
+        color: color,
+        year: year,
+        price: price,
+        picture: picture
+      };
+      cars.push(newCar);
+      alert("Product Added");
+      printCars();
+      document.getElementById('form-car').reset();
+      resetIndex();
+    } else if (arrayId == true) {
+      var _id = index + 1;
+
+      var upCar = {
         brand: brand,
         model: model,
         color: color,
@@ -148,17 +152,12 @@ function addCar() {
         picture: picture,
         id: _id
       };
-      cars.push(newCar);
-      alert("Product Added");
-      printCars();
-      document.getElementById('form-car').reset();
-    } else {
-      cars.splice(id, 1, upCar);
+      cars.splice(index, 1, upCar);
       alert("Product updated");
       printCars();
       document.getElementById('form-car').reset();
       arrayId = false;
-      id = (_readOnlyError("id"), '');
+      console.log(cars);
     }
   }
 }

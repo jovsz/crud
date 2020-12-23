@@ -98,6 +98,7 @@ const cars = [{
 arrayId = false;
 var index = '';
 
+
 function printCars() {
     const container = document.getElementById('container-cars');
     let html = '';
@@ -119,9 +120,8 @@ function printCars() {
 
 
 function deleteCar(id) {
-    const index = cars.findIndex((car) => car.id == id);
-
-    cars.splice(index, 1);
+    const idIndex = cars.findIndex((car) => car.id == id);
+    cars.splice(idIndex, 1);
     alert(`id ${id} Product deleted`);
     printCars();
 }
@@ -138,7 +138,6 @@ function updateCar(id) {
 }
 
 function addCar() {
-    const id = index;
     const brand = document.getElementById('brand').value;
     const model = document.getElementById('model').value;
     const color = document.getElementById('color').value;
@@ -146,21 +145,27 @@ function addCar() {
     const price = document.getElementById('price').value;
     const picture = document.getElementById('picture').value;
 
-    const upCar = {
-        brand,
-        model,
-        color,
-        year,
-        price,
-        picture,
-        id
-
-    }
-
     if (checkEmptyInput() == false) {
         if (arrayId == false) {
             const id = cars[cars.length - 1].id + 1;
             const newCar = {
+                id,
+                brand,
+                model,
+                color,
+                year,
+                price,
+                picture
+            }
+            cars.push(newCar);
+            alert(`Product Added`);
+            printCars();
+            document.getElementById('form-car').reset();
+            resetIndex();
+
+        } else if (arrayId == true) {
+            const id = index + 1;
+            const upCar = {
                 brand,
                 model,
                 color,
@@ -168,19 +173,13 @@ function addCar() {
                 price,
                 picture,
                 id
-
             }
-            cars.push(newCar);
-            alert(`Product Added`);
-            printCars();
-            document.getElementById('form-car').reset();
-        } else {
-            cars.splice(id, 1, upCar);
+            cars.splice(index, 1, upCar);
             alert(`Product updated`);
             printCars();
             document.getElementById('form-car').reset();
             arrayId = false;
-            id = '';
+            console.log(cars);
 
         }
     }
