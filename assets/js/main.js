@@ -146,7 +146,8 @@ function addCar() {
     const price = document.getElementById('price').value;
     const picture = document.getElementById('picture').value;
 
-    const newCar = {
+
+    const upCar = {
         brand,
         model,
         color,
@@ -159,19 +160,31 @@ function addCar() {
 
     if (checkEmptyInput() == false) {
         if (arrayId == false) {
-            const id = cars[cars.length - 1].id;
+            const id = cars[cars.length - 1].id + 1;
+            const newCar = {
+                brand,
+                model,
+                color,
+                year,
+                price,
+                picture,
+                id
+
+            }
             cars.push(newCar);
-            alert(`Product ${id} Added`);
+            alert(`Product Added`);
             printCars();
             document.getElementById('form-car').reset();
 
+
         } else {
-            console.log(id);
-            cars.splice(id, 1, newCar);
-            alert(`Product ${id+1} update`);
+            cars.splice(id, 1, upCar);
+            alert(`Product update`);
             printCars();
             document.getElementById('form-car').reset();
             arrayId = false;
+            index = '';
+
         }
     }
 }

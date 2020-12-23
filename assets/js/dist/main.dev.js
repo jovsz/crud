@@ -123,7 +123,7 @@ function addCar() {
   var year = document.getElementById('year').value;
   var price = document.getElementById('price').value;
   var picture = document.getElementById('picture').value;
-  var newCar = {
+  var upCar = {
     brand: brand,
     model: model,
     color: color,
@@ -135,18 +135,28 @@ function addCar() {
 
   if (checkEmptyInput() == false) {
     if (arrayId == false) {
-      var _id = cars[cars.length - 1].id;
+      var _id = cars[cars.length - 1].id + 1;
+
+      var newCar = {
+        brand: brand,
+        model: model,
+        color: color,
+        year: year,
+        price: price,
+        picture: picture,
+        id: _id
+      };
       cars.push(newCar);
-      alert("Product ".concat(_id, " Added"));
+      alert("Product Added");
       printCars();
       document.getElementById('form-car').reset();
     } else {
-      console.log(id);
-      cars.splice(id, 1, newCar);
-      alert("Product ".concat(id + 1, " update"));
+      cars.splice(id, 1, upCar);
+      alert("Product update");
       printCars();
       document.getElementById('form-car').reset();
       arrayId = false;
+      index = '';
     }
   }
 }
