@@ -136,7 +136,7 @@ function addCar() {
         picture: picture
       };
       cars.push(newCar);
-      alert("Product Added");
+      alert("Product ".concat(id, " Added"));
       printCars();
       document.getElementById('form-car').reset();
       resetIndex();
@@ -153,7 +153,7 @@ function addCar() {
         id: _id
       };
       cars.splice(index, 1, upCar);
-      alert("Product updated");
+      alert("Product ".concat(_id, " updated"));
       printCars();
       document.getElementById('form-car').reset();
       arrayId = false;

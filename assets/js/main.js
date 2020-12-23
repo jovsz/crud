@@ -4,7 +4,7 @@ const cars = [{
         model: 'Prius',
         color: 'Red',
         year: 2020,
-        price: '$150,000',
+        price: '$350,000',
         picture: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.carscoops.com%2Fwp-content%2Fuploads%2F2020%2F05%2F2021-toyota-prius-2020-edition-0.jpg&f=1&nofb=1"
     },
     {
@@ -22,7 +22,7 @@ const cars = [{
         model: 'NSX',
         color: 'Red',
         year: 2020,
-        price: '3,750,000',
+        price: '$3,750,000',
         picture: "https://acroadtrip.blob.core.windows.net/catalogo-imagenes/m/RT_V_78cb9a76e7c2490981bb65da09bfa7ae.jpg"
     },
     {
@@ -124,7 +124,7 @@ function printCars() {
 function deleteCar(id) {
     const idIndex = cars.findIndex((car) => car.id == id);
     cars.splice(idIndex, 1);
-    alert(`id ${id} Product deleted`);
+    alert(`Product ID: id ${id} deleted`);
     printCars();
 }
 
@@ -160,7 +160,7 @@ function addCar() {
                 picture
             }
             cars.push(newCar);
-            alert(`Product Added`);
+            alert(`Product ID: ${id} Added`);
             printCars();
             document.getElementById('form-car').reset();
             resetIndex();
@@ -177,7 +177,7 @@ function addCar() {
                 id
             }
             cars.splice(index, 1, upCar);
-            alert(`Product updated`);
+            alert(`Product ID: ${id} updated`);
             printCars();
             document.getElementById('form-car').reset();
             arrayId = false;
