@@ -144,7 +144,7 @@ function addCar() {
     } else {
       console.log(id);
       cars.splice(id, 1, newCar);
-      alert("Product ".concat(id, " update"));
+      alert("Product ".concat(id + 1, " update"));
       printCars();
       document.getElementById('form-car').reset();
       arrayId = false;
