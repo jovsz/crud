@@ -111,8 +111,10 @@ function printCars() {
                 <td class="width-100">${car.year}</td>
                 <td class="width-200">${car.price}</td>
                 <td class="width-300"><img src=${car.picture}></td>
-                <td class="width-option"><button onclick="updateCar(${car.id})" class="btn btn-primary ">Update</button> 
-                <button onclick="deleteCar(${car.id})" class="btn btn-danger">Delete</button></td>
+                <td class="width-option"><button onclick="updateCar(${car.id})" class="btn btn-primary "><i class="fas fa-edit"></i></button> 
+                <button onclick="deleteCar(${car.id})" class="btn btn-danger"><i class="fas fa-minus-circle"></i>
+
+                </button></td>
                 </tr>`;
     });
     container.innerHTML = html;

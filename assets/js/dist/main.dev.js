@@ -88,7 +88,7 @@ function printCars() {
   var container = document.getElementById('container-cars');
   var html = '';
   cars.forEach(function (car) {
-    html += "<tr>\n                <td class=\"width-200\">".concat(car.brand, "</td>\n                <td class=\"width-100\">").concat(car.model, "</td>\n                <td class=\"width-100\">").concat(car.color, "</td>\n                <td class=\"width-100\">").concat(car.year, "</td>\n                <td class=\"width-200\">").concat(car.price, "</td>\n                <td class=\"width-300\"><img src=").concat(car.picture, "></td>\n                <td class=\"width-option\"><button onclick=\"updateCar(").concat(car.id, ")\" class=\"btn btn-primary \">Update</button> \n                <button onclick=\"deleteCar(").concat(car.id, ")\" class=\"btn btn-danger\">Delete</button></td>\n                </tr>");
+    html += "<tr>\n                <td class=\"width-200\">".concat(car.brand, "</td>\n                <td class=\"width-100\">").concat(car.model, "</td>\n                <td class=\"width-100\">").concat(car.color, "</td>\n                <td class=\"width-100\">").concat(car.year, "</td>\n                <td class=\"width-200\">").concat(car.price, "</td>\n                <td class=\"width-300\"><img src=").concat(car.picture, "></td>\n                <td class=\"width-option\"><button onclick=\"updateCar(").concat(car.id, ")\" class=\"btn btn-primary \"><i class=\"fas fa-edit\"></i></button> \n                <button onclick=\"deleteCar(").concat(car.id, ")\" class=\"btn btn-danger\"><i class=\"fas fa-minus-circle\"></i>\n\n                </button></td>\n                </tr>");
   });
   container.innerHTML = html;
 }

@@ -2,7 +2,7 @@
         padding: 0;
         margin: 0;
         font-family: 'Poppins', sans-serif;
-        font-size: 1rem
+        font-size: 1.1rem
     }
     
     body {
@@ -72,11 +72,27 @@
     
     .card-body {
         color: #1cc997;
+        padding-top: 22px;
+    }
+    
+    .btn-primary {
+        background-color: #1cc997;
+        border: #1cc997;
     }
     
     .table {
         border: none;
         overflow-x: auto;
+    }
+    
+    tbody,
+    td {
+        background-color: #222831;
+        color: beige;
+    }
+    
+    tbody {
+        border: solid #1cc997 5px;
     }
     
     .table-fixed tbody {
@@ -95,7 +111,6 @@
     .table-fixed tbody td,
     .table-fixed thead>tr>th {
         float: left;
-        border-bottom-width: 0;
     }
     
     thead {
