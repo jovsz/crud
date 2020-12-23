@@ -48,14 +48,47 @@ var cars = [{
   year: 2020,
   price: '$391,900',
   picture: "https://acroadtrip.blob.core.windows.net/catalogo-imagenes/m/RT_V_f3c22dcb6e2641db878f583a67b5e443.jpg"
+}, {
+  id: 7,
+  brand: 'Audi',
+  model: 'A1',
+  color: 'Green',
+  year: 2020,
+  price: '$429,900',
+  picture: "https://acroadtrip.blob.core.windows.net/catalogo-imagenes/m/RT_V_89ebe3cc289148dcb0333391d6293a91.jpg"
+}, {
+  id: 8,
+  brand: 'Audi',
+  model: 'A3',
+  color: 'Red',
+  year: 2020,
+  price: '$504,900',
+  picture: "https://acs2.blob.core.windows.net/imgcatalogo/m/VA_a0d14d9ff1fe499794abcb4ff8d264f9.jpg"
+}, {
+  id: 9,
+  brand: 'BMW',
+  model: 'i3',
+  color: 'Dark blue',
+  year: 2020,
+  price: '$1,165,000',
+  picture: "https://acroadtrip.blob.core.windows.net/catalogo-imagenes/m/RT_V_597c73e5f75d4a3aa5a1cde38c08e32e.jpg"
+}, {
+  id: 10,
+  brand: 'BMW',
+  model: 'Serie 8',
+  color: 'Black',
+  year: 2020,
+  price: '$2,150,000',
+  picture: "https://acroadtrip.blob.core.windows.net/catalogo-imagenes/m/RT_V_cc7c5bd21c3a4711831c39cf7f626e56.jpg"
 }];
 arrayId = false;
+var index = '';
 
 function printCars() {
   var container = document.getElementById('container-cars');
   var html = '';
   cars.forEach(function (car) {
-    html += "<tr>\n                <td>".concat(car.brand, "</td>\n                <td>").concat(car.model, "</td>\n                <td>").concat(car.color, "</td>\n                <td>").concat(car.year, "</td>\n                <td>").concat(car.price, "</td>\n                <td><img src=").concat(car.picture, "></td>\n                <td><button onclick=\"onEdit(").concat(car.id - 1, ")\" class=\"btn btn-primary \">Update</button> \n                <button onclick=\"deleteCar(").concat(car.id, ")\" class=\"btn btn-danger\">Delete</button></td>\n                </tr>");
+    html += "<tr>\n                <td class=\"width-200\">".concat(car.brand, "</td>\n                <td class=\"width-100\">").concat(car.model, "</td>\n                <td class=\"width-100\">").concat(car.color, "</td>\n                <td class=\"width-100\">").concat(car.year, "</td>\n                <td class=\"width-200\">").concat(car.price, "</td>\n                <td class=\"width-300\"><img src=").concat(car.picture, "></td>\n                <td class=\"width-option\"><button onclick=\"updateCar(").concat(car.id, ")\" class=\"btn btn-primary \">Update</button> \n                <button onclick=\"deleteCar(").concat(car.id, ")\" class=\"btn btn-danger\">Delete</button></td>\n                </tr>");
   });
   container.innerHTML = html;
 }
@@ -69,35 +102,27 @@ function deleteCar(id) {
   printCars();
 }
 
-function onEdit(id) {
+function updateCar(id) {
   arrayId = true;
-  var index = cars.findIndex(function (car) {
+  index = cars.findIndex(function (car) {
     return car.id == id;
   });
-  document.getElementById("brand").value = cars[id].brand;
-  document.getElementById("model").value = cars[id].model;
-  document.getElementById("color").value = cars[id].color;
-  document.getElementById("year").value = cars[id].year;
-  document.getElementById("price").value = cars[id].price;
-  document.getElementById("picture").value = cars[id].picture;
-  var brand = document.getElementById('brand').value;
-  var model = document.getElementById('model').value;
-  var color = document.getElementById('color').value;
-  var year = document.getElementById('year').value;
-  var price = document.getElementById('price').value;
-  var picture = document.getElementById('picture').value;
-  return index;
-  addCar();
+  document.getElementById("brand").value = cars[index].brand;
+  document.getElementById("model").value = cars[index].model;
+  document.getElementById("color").value = cars[index].color;
+  document.getElementById("year").value = cars[index].year;
+  document.getElementById("price").value = cars[index].price;
+  document.getElementById("picture").value = cars[index].picture;
 }
 
 function addCar() {
+  var id = index;
   var brand = document.getElementById('brand').value;
   var model = document.getElementById('model').value;
   var color = document.getElementById('color').value;
   var year = document.getElementById('year').value;
   var price = document.getElementById('price').value;
   var picture = document.getElementById('picture').value;
-  var id = cars[cars.length - 1].id + 1;
   var newCar = {
     brand: brand,
     model: model,
@@ -110,14 +135,19 @@ function addCar() {
 
   if (checkEmptyInput() == false) {
     if (arrayId == false) {
+      var _id = cars[cars.length - 1].id + 1;
+
       cars.push(newCar);
-      alert("Product ".concat(id, " Added"));
+      alert("Product ".concat(_id + 1, " Added"));
       printCars();
       document.getElementById('form-car').reset();
     } else {
-      cars.splice(cars[id], 1, newCar);
-      alert("Product updated");
+      console.log(id);
+      cars.splice(id, 1, newCar);
+      alert("Product ".concat(id, " update"));
       printCars();
+      document.getElementById('form-car').reset();
+      arrayId = false;
     }
   }
 }

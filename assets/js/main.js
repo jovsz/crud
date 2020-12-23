@@ -53,10 +53,49 @@ const cars = [{
         picture: "https://acroadtrip.blob.core.windows.net/catalogo-imagenes/m/RT_V_f3c22dcb6e2641db878f583a67b5e443.jpg"
 
     },
+    {
+        id: 7,
+        brand: 'Audi',
+        model: 'A1',
+        color: 'Green',
+        year: 2020,
+        price: '$429,900',
+        picture: "https://acroadtrip.blob.core.windows.net/catalogo-imagenes/m/RT_V_89ebe3cc289148dcb0333391d6293a91.jpg"
+
+    },
+    {
+        id: 8,
+        brand: 'Audi',
+        model: 'A3',
+        color: 'Red',
+        year: 2020,
+        price: '$504,900',
+        picture: "https://acs2.blob.core.windows.net/imgcatalogo/m/VA_a0d14d9ff1fe499794abcb4ff8d264f9.jpg"
+
+    },
+    {
+        id: 9,
+        brand: 'BMW',
+        model: 'i3',
+        color: 'Dark blue',
+        year: 2020,
+        price: '$1,165,000',
+        picture: "https://acroadtrip.blob.core.windows.net/catalogo-imagenes/m/RT_V_597c73e5f75d4a3aa5a1cde38c08e32e.jpg"
+
+    },
+    {
+        id: 10,
+        brand: 'BMW',
+        model: 'Serie 8',
+        color: 'Black',
+        year: 2020,
+        price: '$2,150,000',
+        picture: "https://acroadtrip.blob.core.windows.net/catalogo-imagenes/m/RT_V_cc7c5bd21c3a4711831c39cf7f626e56.jpg"
+
+    },
 ]
-
 arrayId = false;
-
+var index = '';
 
 function printCars() {
     const container = document.getElementById('container-cars');
@@ -64,13 +103,13 @@ function printCars() {
 
     cars.forEach((car) => {
         html += `<tr>
-                <td>${car.brand}</td>
-                <td>${car.model}</td>
-                <td>${car.color}</td>
-                <td>${car.year}</td>
-                <td>${car.price}</td>
-                <td><img src=${car.picture}></td>
-                <td><button onclick="onEdit(${car.id -1})" class="btn btn-primary ">Update</button> 
+                <td class="width-200">${car.brand}</td>
+                <td class="width-100">${car.model}</td>
+                <td class="width-100">${car.color}</td>
+                <td class="width-100">${car.year}</td>
+                <td class="width-200">${car.price}</td>
+                <td class="width-300"><img src=${car.picture}></td>
+                <td class="width-option"><button onclick="updateCar(${car.id})" class="btn btn-primary ">Update</button> 
                 <button onclick="deleteCar(${car.id})" class="btn btn-danger">Delete</button></td>
                 </tr>`;
     });
@@ -86,37 +125,26 @@ function deleteCar(id) {
     printCars();
 }
 
-function onEdit(id) {
+function updateCar(id) {
     arrayId = true;
-    const index = cars.findIndex((car) => car.id == id);
-    document.getElementById("brand").value = cars[id].brand;
-    document.getElementById("model").value = cars[id].model;
-    document.getElementById("color").value = cars[id].color;
-    document.getElementById("year").value = cars[id].year;
-    document.getElementById("price").value = cars[id].price;
-    document.getElementById("picture").value = cars[id].picture;
-
-    const brand = document.getElementById('brand').value;
-    const model = document.getElementById('model').value;
-    const color = document.getElementById('color').value;
-    const year = document.getElementById('year').value;
-    const price = document.getElementById('price').value;
-    const picture = document.getElementById('picture').value;
-
-    return index;
-    addCar();
+    index = cars.findIndex((car) => car.id == id);
+    document.getElementById("brand").value = cars[index].brand;
+    document.getElementById("model").value = cars[index].model;
+    document.getElementById("color").value = cars[index].color;
+    document.getElementById("year").value = cars[index].year;
+    document.getElementById("price").value = cars[index].price;
+    document.getElementById("picture").value = cars[index].picture;
 
 }
 
-
 function addCar() {
+    const id = index;
     const brand = document.getElementById('brand').value;
     const model = document.getElementById('model').value;
     const color = document.getElementById('color').value;
     const year = document.getElementById('year').value;
     const price = document.getElementById('price').value;
     const picture = document.getElementById('picture').value;
-    const id = cars[cars.length - 1].id + 1;
 
     const newCar = {
         brand,
@@ -126,19 +154,25 @@ function addCar() {
         price,
         picture,
         id
+
     }
+
     if (checkEmptyInput() == false) {
         if (arrayId == false) {
+            const id = cars[cars.length - 1].id + 1;
             cars.push(newCar);
-            alert(`Product ${id} Added`);
+            alert(`Product ${id +1} Added`);
             printCars();
             document.getElementById('form-car').reset();
-        } else {
-            cars.splice(cars[id], 1, newCar);
-            alert(`Product updated`);
-            printCars();
-        }
 
+        } else {
+            console.log(id);
+            cars.splice(id, 1, newCar);
+            alert(`Product ${id} update`);
+            printCars();
+            document.getElementById('form-car').reset();
+            arrayId = false;
+        }
     }
 }
 
