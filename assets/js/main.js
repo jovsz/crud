@@ -94,6 +94,7 @@ const cars = [{
 
     },
 ]
+
 arrayId = false;
 var index = '';
 
@@ -134,7 +135,6 @@ function updateCar(id) {
     document.getElementById("year").value = cars[index].year;
     document.getElementById("price").value = cars[index].price;
     document.getElementById("picture").value = cars[index].picture;
-
 }
 
 function addCar() {
@@ -145,7 +145,6 @@ function addCar() {
     const year = document.getElementById('year').value;
     const price = document.getElementById('price').value;
     const picture = document.getElementById('picture').value;
-
 
     const upCar = {
         brand,
@@ -175,11 +174,9 @@ function addCar() {
             alert(`Product Added`);
             printCars();
             document.getElementById('form-car').reset();
-
-
         } else {
             cars.splice(id, 1, upCar);
-            alert(`Product update`);
+            alert(`Product updated`);
             printCars();
             document.getElementById('form-car').reset();
             arrayId = false;

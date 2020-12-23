@@ -152,7 +152,7 @@ function addCar() {
       document.getElementById('form-car').reset();
     } else {
       cars.splice(id, 1, upCar);
-      alert("Product update");
+      alert("Product updated");
       printCars();
       document.getElementById('form-car').reset();
       arrayId = false;
