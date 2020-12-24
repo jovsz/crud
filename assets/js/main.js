@@ -1,4 +1,4 @@
-const cars = [{
+var cars = [{
         id: 1,
         brand: 'Toyota',
         model: 'Prius',
@@ -99,6 +99,7 @@ arrayId = false;
 var index = '';
 
 
+
 function printCars() {
     const container = document.getElementById('container-cars');
     let html = '';
@@ -126,6 +127,7 @@ function deleteCar(id) {
     cars.splice(idIndex, 1);
     alert(`Product ID: id ${id} deleted`);
     printCars();
+    console.log(cars);
 }
 
 function updateCar(id) {
@@ -148,23 +150,37 @@ function addCar() {
     const picture = document.getElementById('picture').value;
 
     if (checkEmptyInput() == false) {
-        if (arrayId == false) {
-            const id = cars[cars.length - 1].id + 1;
-            const newCar = {
-                id,
-                brand,
-                model,
-                color,
-                year,
-                price,
-                picture
-            }
-            cars.push(newCar);
-            alert(`Product ID: ${id} Added`);
-            printCars();
-            document.getElementById('form-car').reset();
-            resetIndex();
 
+        if (arrayId == false) {
+            if (cars != '') {
+                const id = cars[cars.length - 1].id + 1;
+                const newCar = {
+                    id,
+                    brand,
+                    model,
+                    color,
+                    year,
+                    price,
+                    picture
+                }
+                cars.push(newCar);
+                alert(`Product ID: ${id} Added`);
+                printCars();
+                document.getElementById('form-car').reset();
+
+            } else {
+                cars = [{
+                    id: 1,
+                    brand,
+                    model,
+                    color,
+                    year,
+                    price,
+                    picture
+                }]
+                console.log(cars);
+                printCars();
+            }
         } else if (arrayId == true) {
             const id = index + 1;
             const upCar = {
