@@ -178,8 +178,8 @@ function addCar() {
                     price,
                     picture
                 }]
-                console.log(cars);
                 printCars();
+                document.getElementById('form-car').reset();
             }
         } else if (arrayId == true) {
             const id = index + 1;
