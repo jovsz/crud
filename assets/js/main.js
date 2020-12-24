@@ -169,8 +169,9 @@ function addCar() {
                 document.getElementById('form-car').reset();
 
             } else {
+                const id = 1;
                 cars = [{
-                    id: 1,
+                    id,
                     brand,
                     model,
                     color,
@@ -178,6 +179,7 @@ function addCar() {
                     price,
                     picture
                 }]
+                alert(`Product ID: ${id} Added`);
                 printCars();
                 document.getElementById('form-car').reset();
             }
